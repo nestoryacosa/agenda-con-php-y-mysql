@@ -15,45 +15,45 @@
     <title>Registro</title>
 </head>
 <body>
-    <div>
+    <center>
         <h1>Registro de contactos</h1>
-    </div>
-    <div>
-        <table>
-            <thead>
+        <form action="registrar.php" method="post">
+            <p><input type="text" name="nombre" placeholder="Nombre"></p>
+            <p><input type="email" name="email" placeholder="email"></p>
+            <p><input type="text" name="telefono" placeholder="Teléfono"></p>
+            <p><input type="submit" value="Registrar" name="registrar"></p> 
+        </form>
+       <br>
+       <hr>
+
+       <table>
+        <h1>Lista de contactos</h1>
+        <thead>
             <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>e-mail</th>
-                    <th>Teléfono</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-
-
-            <?php                
-            // desplegar datos de cada fila de la relación contacto
-            while($renglon = mysqli_fetch_assoc($resultado))  :?>
-        
-                <tr>
-                    <td><?=$renglon["id"];?></td>
-                    <td><?=$renglon["nombre"];?></td>
-                    <td><?=$renglon["mail"];?></td>
-                    <td><?=$renglon["telefono"];?></td>
-                    <td class="editarUsr"><a href="editar.php"><button>Editar</button></a></td>
-                    <td class="borrarUsr"><a href="eliminar.php"><button>Borrar</button></a></td>
-                </tr>
-            </tbody>
-
-        <?php 
-            endwhile;
-            mysqli_close($con);
-        ?>
-            </tbody>
-        </table>
-    </div>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>e-mail</th>
+                <th>Teléfono</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while($fila = mysqli_fetch_array($resultado)) :?>
+            <tr>
+                <th><?= $fila['id']?></th>
+                <th><?= $fila['nombre']?></th>
+                <th><?= $fila['email']?></th>
+                <th><?= $fila['telefono']?></th>
+                <th><a href="editar.php?id= <?= $fila['id'] ?>"><button>Editar</button></a></th>
+                <th><a href="eliminar.php?id= <?= $fila['id'] ?>"><button>Eliminar</button></a></th>
+            </tr>
+            <?php endwhile;?>
+        </tbody>
+       </table>
+       
+       
+    </center>
 </body>
 </html>
 
