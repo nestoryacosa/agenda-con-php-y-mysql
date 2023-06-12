@@ -10,8 +10,8 @@ $con = conectar();
                 email='$email',
                 telefono='$telefono' 
             WHERE `id`='$id'";
-    $res = mysqli_query($con,$sql);
-    // if($res) echo "todo bien";
+    $resultado = mysqli_query($con,$sql);
+    // if($resultado) echo "todo bien";
     Header("location:index.php");
 
 
