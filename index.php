@@ -3,7 +3,7 @@
  $con = conectar();
  // echo $con ? "Conexión exitosa :D": null; 
  $sql = "SELECT * FROM contacto";
- $res = mysqli_query($con,$sql);
+ $resultado = mysqli_query($con,$sql);
 
 ?>
 <!DOCTYPE html>
